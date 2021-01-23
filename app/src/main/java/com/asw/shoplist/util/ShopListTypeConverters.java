@@ -4,7 +4,7 @@ import androidx.room.TypeConverter;
 
 import java.time.LocalDate;
 
-public class ShopItemConverters {
+public class ShopListTypeConverters {
     @TypeConverter
     public static long getEpochFromLocalDate(LocalDate date) {
         return date.toEpochDay();

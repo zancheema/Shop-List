@@ -50,5 +50,10 @@ public class HomeFragment extends Fragment {
                         navController.navigate(R.id.action_homeFragment_to_compareListsFragment);
                 }
         ));
+        viewModel.observeViewListsEvent().observe(getViewLifecycleOwner(), new Event.EventObserver<>(
+                view -> {
+                    if (view) navController.navigate(R.id.action_homeFragment_to_viewListsFragment);
+                }
+        ));
     }
 }

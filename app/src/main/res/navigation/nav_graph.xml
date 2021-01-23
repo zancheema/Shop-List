@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_compareListsFragment"
             app:destination="@id/compareListsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewListsFragment"
+            app:destination="@id/viewListsFragment" />
     </fragment>
     <fragment
         android:id="@+id/createListFragment"

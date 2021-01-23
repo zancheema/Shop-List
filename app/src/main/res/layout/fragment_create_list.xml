@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewmodel"
+            type="com.asw.shoplist.createlist.CreateListViewModel" />
     </data>
 
     <LinearLayout
@@ -25,6 +27,7 @@
 
         <EditText
             android:id="@+id/edtShopName"
+            android:text="@={viewmodel.shopName}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -32,6 +35,7 @@
 
         <EditText
             android:id="@+id/edtItemName"
+            android:text="@={viewmodel.itemName}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -39,6 +43,7 @@
 
         <EditText
             android:id="@+id/edtItemPrice"
+            android:text="@={viewmodel.itemPrice}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -47,6 +52,7 @@
 
         <Button
             android:id="@+id/btnAddList"
+            android:onClick="@{() -> viewmodel.saveItem()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -5,6 +5,11 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.asw.shoplist.comparelists.CompareListsViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <ScrollView
@@ -31,13 +36,19 @@
                 android:id="@+id/spinnerShop1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp" />
+                android:layout_margin="16dp"
+                android:selection="@={viewmodel.selectedShop1Index}"
+                app:header="@{viewmodel.shop1Head}"
+                app:spinner_items="@{viewmodel.shopNames}" />
 
             <Spinner
                 android:id="@+id/spinnerShop2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp" />
+                android:layout_margin="16dp"
+                android:selection="@={viewmodel.selectedShop2Index}"
+                app:header="@{viewmodel.shop2Head}"
+                app:spinner_items="@{viewmodel.shopNames}" />
 
 
             <Button
@@ -48,6 +59,7 @@
                 android:layout_margin="16dp"
                 android:layout_marginTop="32dp"
                 android:background="@color/colorPrimaryDark"
+                android:onClick="@{() -> viewmodel.compareShops()}"
                 android:text="@string/compare"
                 android:textColor="@android:color/white" />
 
@@ -56,7 +68,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="16sp" />
+                android:text="@{@string/generic_shop_name_details(viewmodel.selectedShop1Name)}"
+                android:textSize="16sp"
+                android:visibility="@{viewmodel.tablesVisibility ? View.VISIBLE : View.GONE}" />
 
             <TableLayout
                 android:id="@+id/table_shop1"
@@ -66,8 +80,9 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:gravity="center"
-
-                android:visibility="gone" />
+                android:visibility="@{viewmodel.tablesVisibility ? View.VISIBLE : View.GONE}"
+                app:other_shop_table_items="@{viewmodel.shop2Items}"
+                app:shop_table_items="@{viewmodel.shop1Items}" />
 
 
             <TextView
@@ -76,7 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:gravity="center"
-                android:textSize="16sp" />
+                android:text="@{@string/generic_shop_name_details(viewmodel.selectedShop2Name)}"
+                android:textSize="16sp"
+                android:visibility="@{viewmodel.tablesVisibility ? View.VISIBLE : View.GONE}" />
 
             <TableLayout
                 android:id="@+id/table_shop2"
@@ -84,7 +101,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
-                android:visibility="gone" />
+                android:visibility="@{viewmodel.tablesVisibility ? View.VISIBLE : View.GONE}"
+                app:other_shop_table_items="@{viewmodel.shop1Items}"
+                app:shop_table_items="@{viewmodel.shop2Items}" />
 
             <TextView
                 android:id="@+id/text_result"
@@ -92,8 +111,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:gravity="center"
+                android:text="@{viewmodel.getResultText(viewmodel.shop1Items, viewmodel.shop2Items)}"
                 android:textColor="@color/colorGreen"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="@{viewmodel.tablesVisibility ? View.VISIBLE : View.GONE}" />
 
         </LinearLayout>
     </ScrollView>

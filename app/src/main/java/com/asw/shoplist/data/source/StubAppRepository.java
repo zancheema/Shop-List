@@ -18,7 +18,7 @@ public class StubAppRepository implements AppRepository {
         items.add(new ShopItem("Shop 1", "Item 1", 34.0));
         items.add(new ShopItem("Shop 1", "Item 2", 25.0));
         items.add(new ShopItem("Shop 2", "Item 1", 30));
-        items.add(new ShopItem("Shop 2", "Item 1", 32.0));
+        items.add(new ShopItem("Shop 2", "Item 2", 32.0));
 
         return new MutableLiveData<>(items);
     }

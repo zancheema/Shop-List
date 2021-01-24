@@ -12,4 +12,7 @@
     <string name="compare_shops_title">Select Shop Names to Compare</string>
     <string name="generic_price">€ %.2f</string>
     <string name="view_lists">View Lists</string>
+    <string name="generic_shop_name_details">%s Details</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
 </resources>
